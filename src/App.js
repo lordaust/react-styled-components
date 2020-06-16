@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Theme from './theme';
 
-function App() {
+import Header from './pages/Header';
+import Footer from './pages/Footer';
+
+import Frontpage from './pages/Frontpage';
+import Products from './pages/Products';
+import Experiences from './pages/Experiences';
+import About from './pages/About';
+import Privacy from './pages/Privacy';
+import Contact from './pages/Contact';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Theme>
+        <body ClassName=''>
+          <Header headerText='Header 1' />
+          <Route path='/' exact component={Frontpage} />
+          <Route path='/our-products/' component={Products} />
+          <Route path='/experiences/' component={Experiences} />
+          <Route path='/about-us/' component={About} />
+          <Route path='/privacy-and-cookies/' component={Privacy} />
+          <Route path='/contact/' component={Contact} />
+          <Footer />
+        </body>
+      </Theme>
+    </Router>
   );
-}
+};
 
 export default App;
